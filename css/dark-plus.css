@@ -1,0 +1,80 @@
+t,
+t::selection,
+.type {
+  color: #4EC9B0;
+}
+
+k,
+k::selection,
+.keyword {
+  color: #569CD6;
+}
+
+v,
+v::selection,
+.vars {
+  color: #9CDCFE;
+}
+
+fN,
+fN::selection,
+.fnName {
+  color: #DCDCAA;
+}
+
+r,
+r::selection,
+.reserved {
+  color: #C586C0;
+}
+
+re,
+re::selection,
+.reg-exp {
+  color: #D16969;
+}
+
+s,
+s::selection,
+.string {
+  color: #AF695D;
+  text-decoration: none;
+}
+
+c,
+c::selection,
+.comment {
+  color: #558B3A;
+}
+
+n,
+n::selection,
+.number {
+  color: #B5CEA8;
+}
+
+/* body {
+  background: #1E1E1E;
+  font-size: 1.5em;
+  color: white;
+} */
+
+.fi {
+  opacity: 0;
+  max-width: 0;
+  display: inline-block;
+  transition: opacity 0.75s linear, max-width 0.75s linear;
+}
+
+.fi.visible {
+  opacity: 1;
+  max-width: 999px;
+}
+
+.i-b {
+    display: inline-block;
+}
+
+.i-b.visible {
+    padding: 10px 0;
+}
