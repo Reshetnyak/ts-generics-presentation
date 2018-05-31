@@ -57,25 +57,59 @@
 					</section>
 
 					<section>
-						<p>
+						<h3><span class="blue">Typed</span> superset that compiles</h3>
+						<!-- <p>
+							<p class="fragment highlight-current-blue i-b" data-fragment-index="1">Typed</p>
+							<p class="fragment highlight-current-blue i-b" data-fragment-index="2">superset</p>
+							that <p class="fragment highlight-current-blue i-b" data-fragment-index="3">compiles</p>
+						</p> -->
+							<pre>
+<k>function</k> <fN>toPixels</fN>(<v>amount</v><span id="fro-1"></span>)<span id="fro-2"></span> {
+    <r>return</r> <v>amount</v> + <s>'px'</s>;
+}
+<k>const</k> <v>numOfPixels</v> = <fN>toPixels</fN>(<n>100</n>); <c>// '100px'</c>
+							</pre>
+							<span class="fragment fade-in" data-fragment-index="1" id="frs-1">
+								<span>: <t>number</t></span>
+							</span>
+							<span class="fragment fade-in" data-fragment-index="2" id="frs-2">
+								<span>: <t>string</t></span>
+							</span>
+						<!-- <p>
 							<p class="fragment highlight-current-blue i-b" data-fragment-index="1">Typed</p>
 							<p class="fragment highlight-current-blue i-b" data-fragment-index="2">superset</p>
 							that <p class="fragment highlight-current-blue i-b" data-fragment-index="3">compiles</p>
 						</p>
 						<ul>
-							<span class="fragment fade-in" data-fragment-index="1">
+							<li id="fro-1"></li>
+							<li id="fro-2"></li>
+							<li id="fro-3"></li>
+							<span class="fragment fade-in" data-fragment-index="1" id="frs-1">
 								<li>TS offers static analysis based on optional type annotations you provide</li></span>
-							<span class="fragment fade-in" data-fragment-index="2">
+							<span class="fragment fade-in" data-fragment-index="2" id="frs-2">
 								<li>TS extends JavaScript which allows you to write in the latest EcmaScript Standard</li></span>
-							<span class="fragment fade-in" data-fragment-index="3">
+							<span class="fragment fade-in" data-fragment-index="3" id="frs-3">
 								<li>TS is compiled language which means that you could know about possible errors on analysis phase or on compilation phase.
 									Before even running your application </li></span>
-						</ul>
+						</ul> -->
 					</section>
 				</section>
 
 				<section>
 					<h2>Hello There</h2>
+					<ul>
+						<li id="fro-4"></li>
+						<li id="fro-5"></li>
+						<li id="fro-6"></li>
+						<span class="fragment fade-in" data-fragment-index="1" id="frs-4">
+							<li><r>import</r> { <v>User</v> } <r>from</r> <s>'./model'</s>;</li></span>
+						<span class="fragment fade-in" data-fragment-index="2" id="frs-5">
+							<li><r>import</r> { <v>UserService</v> } <r>from</r> <s>'./user.service'</s>;</li></span>
+						<span class="fragment fade-in" data-fragment-index="3" id="frs-6">
+							<li>r>export</r> <k>class</k> <t>AppComponent</t> {
+								<v>user</v>: <t>User</t>;
+								<k>constructor</k>(<k>private</k> <v>userService</v></li></span>
+					</ul>
 					<pre>
 <r>import</r> { <v>User</v> } <r>from</r> <s>'./model'</s>;
 <r>import</r> { <v>UserService</v> } <r>from</r> <s>'./user.service'</s>;
@@ -309,9 +343,183 @@ Reveal.addEventListener( 'customevent', function() {
 					// { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/search/search.js', async: true },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/sumpler/sumpler.js', async: true },
+					{ src: 'plugin/typed/typed.js', async: false , callback: function() { }}
 				]
 			});
+
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				console.log(event);
+
+				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			});
+
+			const typeds = {};
+
+			Reveal.addEventListener( 'fragmentshown', function( event ) {
+				// event.fragment = the fragment DOM element
+				console.log('fragment', event);
+				let fr = event.fragments[0];
+				let id = fr.id;
+				if (!id){
+					fr = event.fragments[1] || {};
+					id = fr.id;
+				}
+				if (!id){ return false;}
+				const outputId = id.replace('s', 'o');
+				//debugger;
+				if (fr.classList.contains('fade-in')) {
+					var typed = new Typed(`#${outputId}`, {
+						stringsElement: `#${id}`,
+						loop: false,
+						startDelay: 0,
+						typeSpeed: 25,
+						showCursor: false,
+						contentType: 'html',
+						onComplete: function(self) { console.log('onCmplete ', self) },
+						preStringTyped: function(pos, self) { console.log('preStringTyped ',pos, self); },
+						onStringTyped: function(pos, self) { 
+							console.log('onStringTyped ', pos, self)
+						},
+						onLastStringBackspaced: function(self) { console.log('onLastStringBackspaced ', self) },
+						onTypingPaused: function(pos, self) { console.log('onTypingPaused ', pos, self) },
+						onTypingResumed: function(pos, self) { console.log('onTypingResumed ', pos, self) },
+						onReset: function(self) { console.log('onReset ', self) },
+						onStop: function(pos, self) { console.log('onStop ', pos, self) },
+						onStart: function(pos, self) { console.log('onStart ', pos, self) },
+						onDestroy: function(self) { console.log('onDestroy ', self) }
+					});
+
+					typeds[id] = typed;
+				}
+				
+			});
+
+			window.listeners = () => {
+			
+			___t && ___t.destroy();
+			___b && ___b.destroy();
+
+			window.___t = new Typed('#ttt',{
+				strings: ['Type', 'Person'],
+				typeSpeed: 80,
+				showCursor: false,
+				onComplete: function(self) {
+					console.log('onCmplete ', self)
+				},
+				preStringTyped: function(pos, self) {
+					console.log('preStringTyped ', pos, self);
+				},
+				onStringTyped: function(pos, self) {
+					console.log('onStringTyped ', pos, self)
+					self.stop();
+				},
+				onLastStringBackspaced: function(self) {
+					console.log('onLastStringBackspaced ', self)
+				},
+				onTypingPaused: function(pos, self) {
+					console.log('onTypingPaused ', pos, self)
+				},
+				onTypingResumed: function(pos, self) {
+					console.log('onTypingResumed ', pos, self)
+				},
+				onReset: function(self) {
+					console.log('onReset ', self)
+				},
+				onStop: function(pos, self) {
+					console.log('onStop ', pos, self)
+				},
+				onStart: function(pos, self) {
+					console.log('onStart ', pos, self)
+				},
+				onDestroy: function(self) {
+					console.log('onDestroy ', self)
+				}
+			});
+
+			window.___b = new Typed('#bbb',{
+				strings: [
+				'[Property in keyof T]: T[P]',
+				'[Property in "name" | "age"]: T[P]',
+				'["name"]: T["name"]<br> ["age"]: T["age"]'
+				],
+				typeSpeed: 80,
+				showCursor: false,
+				onComplete: function(self) {
+					console.log('onCmplete ', self)
+				},
+				preStringTyped: function(pos, self) {
+					console.log('preStringTyped ', pos, self);
+				},
+				onStringTyped: function(pos, self) {
+					console.log('onStringTyped ', pos, self);
+					self.stop();
+				},
+				onLastStringBackspaced: function(self) {
+					console.log('onLastStringBackspaced ', self)
+				},
+				onTypingPaused: function(pos, self) {
+					console.log('onTypingPaused ', pos, self)
+				},
+				onTypingResumed: function(pos, self) {
+					console.log('onTypingResumed ', pos, self)
+				},
+				onReset: function(self) {
+					console.log('onReset ', self)
+				},
+				onStop: function(pos, self) {
+					console.log('onStop ', pos, self)
+				},
+				onStart: function(pos, self) {
+					console.log('onStart ', pos, self)
+				},
+				onDestroy: function(self) {
+					console.log('onDestroy ', self)
+				}
+			})
+
+
+			}
+
+			Reveal.addEventListener( 'fragmenthidden', function( event ) {
+				// event.fragment = the fragment DOM element
+				console.log('fragment', event);
+				let fr = event.fragments[0];
+				let id = fr.id;
+				if (!id){
+					fr = event.fragments[1] || {};
+					id = fr.id;
+				}
+				if (!id) {return };
+
+				// const toRemove = typeds.findEl(t => t.id === id);
+				typeds[id].destroy();
+				// debugger;
+				// typeds = [...typeds.slice(0, toRemove), ...typeds(toRmove, typeds.length)];
+
+				// const outputId = id.replace('s', 'o');
+				// //debugger;
+				// if (fr.classList.contains('fade-in')) {
+				// 	var typed = new Typed(`#${outputId}`, {
+				// 		stringsElement: `#${id}`,
+				// 		loop: false,
+				// 		startDelay: 0,
+				// 		typeSpeed: 70,
+				// 		showCursor: false
+				// 	});
+				// }
+			});
+
+			// function callTypedJs() {
+			// 	var typed = new Typed('#typed', {
+			// 		stringsElement: '#typed-strings',
+			// 		loop: true,
+			// 		startDelay: 500,
+			// 		typeSpeed: 50,
+			// 		backSpeed: 35
+			// 	});
+			// }
 
 		</script>
 

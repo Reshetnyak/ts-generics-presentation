@@ -53,11 +53,9 @@ n::selection,
   color: #B5CEA8;
 }
 
-/* body {
-  background: #1E1E1E;
-  font-size: 1.5em;
-  color: white;
-} */
+.blue{
+  color: #1b91ff;
+}
 
 .fi {
   opacity: 0;
