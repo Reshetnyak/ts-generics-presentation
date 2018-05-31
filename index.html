@@ -44,7 +44,7 @@
 				<section>
 					<h2>Generics and Mapped types in TypeScript</h1>
 					<p>
-						<small>Created by <a href="https://github.com/Reshetnyak">Reshetniak Denis</a></small>
+						<small>Created by <a href="https://reshetnyak.github.io/ts-generics-presentation/#/" target="_blank">Reshetniak Denis</a></small>
 					</p>
 				</section>
 
@@ -58,42 +58,43 @@
 
 					<section>
 						<h3><span class="blue">Typed</span> superset that compiles</h3>
-						<!-- <p>
-							<p class="fragment highlight-current-blue i-b" data-fragment-index="1">Typed</p>
-							<p class="fragment highlight-current-blue i-b" data-fragment-index="2">superset</p>
-							that <p class="fragment highlight-current-blue i-b" data-fragment-index="3">compiles</p>
-						</p> -->
 						<pre>
 <k>function</k> <fN>toPixels</fN>(<v>amount</v><span id="fro-1"></span>)<span id="fro-2"></span> {
-<r>return</r> <v>amount</v> + <s>'px'</s>;
+    <r>return</r> <v>amount</v> + <s>'px'</s>;
 }
 <k>const</k> <v>columnWidth</v> = <fN>toPixels</fN>(<n>100</n>); <c>// '100px'</c>
 <span class="fragment fade-in"><k>const</k> <v>rowHeight</v> = <fN>toPixels</fN>(<n>'20'</n>); <c>// TypeScript error</c></span>
 						</pre>
-						<span class="fragment fade-in"><a href="https://github.com/Reshetnyak">See it in action</a></span>
+						<span class="fragment fade-in"><a href="https://stackblitz.com/edit/typescript-nmdtjz?file=index.ts" target="_blank">See it in action</a></span>
 						<span class="fragment fade-in" data-fragment-index="1" id="frs-1">
 							<span>: <t>number</t></span>
 						</span>
 						<span class="fragment fade-in" data-fragment-index="2" id="frs-2">
 							<span>: <t>string</t></span>
 						</span>
-						<!-- <p>
-							<p class="fragment highlight-current-blue i-b" data-fragment-index="1">Typed</p>
-							<p class="fragment highlight-current-blue i-b" data-fragment-index="2">superset</p>
-							that <p class="fragment highlight-current-blue i-b" data-fragment-index="3">compiles</p>
-						</p>
-						<ul>
-							<li id="fro-1"></li>
-							<li id="fro-2"></li>
-							<li id="fro-3"></li>
-							<span class="fragment fade-in" data-fragment-index="1" id="frs-1">
-								<li>TS offers static analysis based on optional type annotations you provide</li></span>
-							<span class="fragment fade-in" data-fragment-index="2" id="frs-2">
-								<li>TS extends JavaScript which allows you to write in the latest EcmaScript Standard</li></span>
-							<span class="fragment fade-in" data-fragment-index="3" id="frs-3">
-								<li>TS is compiled language which means that you could know about possible errors on analysis phase or on compilation phase.
-									Before even running your application </li></span>
-						</ul> -->
+					</section>
+					<section>
+						<h3>Typed <span class="blue">superset</span> that compiles</h3>
+
+<pre><span class="fragment fade-in" data-fragment-index="1"><k>class</k> <t>User</t> {
+    <k>constructor</k>(<v>role</v>, <v>nickName</v>) {
+        <k>this</k>.<v>role</v> = <v>role</v>;
+        <k>this</k>.<v>nickName</v> = <v>nickName</v>;
+        <k>this</k>.<v>created</v> = <k>new</k> <t>Date</t>();
+    }
+}</span>
+<span class="fragment fade-in" data-fragment-index="2">
+<k>class</k> <t>User</t> {
+    <v>created</v> = <k>new</k> <t>Date</t>();
+    <k>constructor</k>(<k>public</k> <v>role</v>, <k>public</k> <v>nickName</v>?) { }
+}</span>
+<span class="fragment fade-in" data-fragment-index="3">
+<k>enum</k> <t>Role</t> {
+    <v>Regular</v>,
+    <v>Admin</v>,
+    <v>New</v> = <s>'Not recognized'</s>
+}</span></pre>
+						<span class="fragment fade-in"><a href="https://stackblitz.com/edit/intro-superset-ts" target="_blank">Demo with enum</a></span>
 					</section>
 				</section>
 
@@ -369,7 +370,15 @@ Reveal.addEventListener( 'customevent', function() {
 					id = fr.id;
 				}
 				if (!id){ return false;}
+				// debugger;
 				const outputId = id.replace('s', 'o');
+				const outputEl = document.querySelector(`#${outputId}`);
+				
+				if (outputEl.classList.contains('to-be-clear')) {
+					outputEl.innerHTML = '';
+					outputEl.classList.remove('to-be-clear');
+				}
+
 				//debugger;
 				if (fr.classList.contains('fade-in')) {
 					var typed = new Typed(`#${outputId}`, {
@@ -496,7 +505,7 @@ Reveal.addEventListener( 'customevent', function() {
 				if (!id) {return };
 
 				// const toRemove = typeds.findEl(t => t.id === id);
-				typeds[id].destroy();
+				typeds[id] && typeds[id].destroy();
 				// debugger;
 				// typeds = [...typeds.slice(0, toRemove), ...typeds(toRmove, typeds.length)];
 
