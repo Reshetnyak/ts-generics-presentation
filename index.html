@@ -63,18 +63,20 @@
 							<p class="fragment highlight-current-blue i-b" data-fragment-index="2">superset</p>
 							that <p class="fragment highlight-current-blue i-b" data-fragment-index="3">compiles</p>
 						</p> -->
-							<pre>
+						<pre>
 <k>function</k> <fN>toPixels</fN>(<v>amount</v><span id="fro-1"></span>)<span id="fro-2"></span> {
-    <r>return</r> <v>amount</v> + <s>'px'</s>;
+<r>return</r> <v>amount</v> + <s>'px'</s>;
 }
-<k>const</k> <v>numOfPixels</v> = <fN>toPixels</fN>(<n>100</n>); <c>// '100px'</c>
-							</pre>
-							<span class="fragment fade-in" data-fragment-index="1" id="frs-1">
-								<span>: <t>number</t></span>
-							</span>
-							<span class="fragment fade-in" data-fragment-index="2" id="frs-2">
-								<span>: <t>string</t></span>
-							</span>
+<k>const</k> <v>columnWidth</v> = <fN>toPixels</fN>(<n>100</n>); <c>// '100px'</c>
+<span class="fragment fade-in"><k>const</k> <v>rowHeight</v> = <fN>toPixels</fN>(<n>'20'</n>); <c>// TypeScript error</c></span>
+						</pre>
+						<span class="fragment fade-in"><a href="https://github.com/Reshetnyak">See it in action</a></span>
+						<span class="fragment fade-in" data-fragment-index="1" id="frs-1">
+							<span>: <t>number</t></span>
+						</span>
+						<span class="fragment fade-in" data-fragment-index="2" id="frs-2">
+							<span>: <t>string</t></span>
+						</span>
 						<!-- <p>
 							<p class="fragment highlight-current-blue i-b" data-fragment-index="1">Typed</p>
 							<p class="fragment highlight-current-blue i-b" data-fragment-index="2">superset</p>
