@@ -70,9 +70,22 @@ n::selection,
 }
 
 .i-b {
-    display: inline-block;
+  display: inline-block;
 }
 
 .i-b.visible {
-    padding: 10px 0;
+  padding: 10px 0;
+}
+
+.types-table{
+  font-size: 1em;
+}
+
+.types-table th {
+  text-align: center;
+}
+
+.reveal table.types-table td {
+  color: #4EC9B0;
+  border-bottom-color: #fff;
 }

@@ -44,8 +44,12 @@
 				<section>
 					<h2>Generics and Mapped types in TypeScript</h1>
 					<p>
-						<small>Created by <a href="https://reshetnyak.github.io/ts-generics-presentation/#/" target="_blank">Reshetniak Denis</a></small>
+						<small>Created by Reshetniak Denis</a></small>
 					</p>
+					<p><a href="http://bit.do/ts-genericss" target="_blank">http://bit.do/ts-generics</a></p>
+					<p><a href="http://bit.do/ts-generics-repo" target="_blank">http://bit.do/ts-generics-repo</a></p>
+					<aside class="notes">
+					</aside>
 				</section>
 
 				<section>
@@ -54,24 +58,39 @@
 						<blockquote cite="http://http://www.typescriptlang.org/">
 							&ldquo;TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.&rdquo;
 						</blockquote>
+						<aside class="notes">
+							<p>Let's translate those buzzwords</p>
+						</aside>
 					</section>
 
 					<section>
 						<h3><span class="blue">Typed</span> superset that compiles</h3>
 						<pre>
-<k>function</k> <fN>toPixels</fN>(<v>amount</v><span id="fro-1"></span>)<span id="fro-2"></span> {
-    <r>return</r> <v>amount</v> + <s>'px'</s>;
+<k>function</k> <fN>isEven</fN>(<v>num</v><span id="fro-1" data-output-id="1"></span>)<span id="fro-2"  data-output-id="2"></span> {
+    <r>return</r> <v>num</v> % <n>2</n> === <n>0</n>;
 }
-<k>const</k> <v>columnWidth</v> = <fN>toPixels</fN>(<n>100</n>); <c>// '100px'</c>
-<span class="fragment fade-in"><k>const</k> <v>rowHeight</v> = <fN>toPixels</fN>(<n>'20'</n>); <c>// TypeScript error</c></span>
+
+<span class="fragment fade-in" data-fragment-index="3"><fN>isEven</fN>(<s>'20'</s>); <c>// TypeScript error</c></span>
+<span class="fragment fade-in" data-fragment-index="4"><k>const</k> <v>columnWidth</v> = <s>'100px'</s>; <c>// type string</c></span>
 						</pre>
 						<span class="fragment fade-in"><a href="https://stackblitz.com/edit/typescript-nmdtjz?file=index.ts" target="_blank">See it in action</a></span>
 						<span class="fragment fade-in" data-fragment-index="1" id="frs-1">
 							<span>: <t>number</t></span>
 						</span>
 						<span class="fragment fade-in" data-fragment-index="2" id="frs-2">
-							<span>: <t>string</t></span>
+							<span>: <t>boolean</t></span>
 						</span>
+						<aside class="notes">
+							<p>Thanks to static analysis system TS helps us to understand how to use parts of our programs.
+								TypeScript offers static analysis based on both the structure of your code,
+								 and the type annotations you provide.</p>
+							<ul>
+								<li>TS doesn't influence on JavaScript that runs in your browser. It only cares about three things:</li>
+								<li>Expected arguments of the function</li>
+								<li>Expected type of returned value</li>
+								<li>And value of variable</li>
+							</ul>
+						</aside>
 					</section>
 					<section>
 						<h3>Typed <span class="blue">superset</span> that compiles</h3>
@@ -96,443 +115,98 @@
 }</span></pre>
 						<span class="fragment fade-in"><a href="https://stackblitz.com/edit/intro-superset-ts" target="_blank">Demo with enum</a></span>
 					</section>
+					<section>
+						<h3>Typed superset that <span class="blue">compiles</span></h3>
+						<p>Demo time</p>
+					</section>
 				</section>
 
 				<section>
-					<h2>Hello There</h2>
-					<ul>
-						<li id="fro-4"></li>
-						<li id="fro-5"></li>
-						<li id="fro-6"></li>
-						<span class="fragment fade-in" data-fragment-index="1" id="frs-4">
-							<li><r>import</r> { <v>User</v> } <r>from</r> <s>'./model'</s>;</li></span>
-						<span class="fragment fade-in" data-fragment-index="2" id="frs-5">
-							<li><r>import</r> { <v>UserService</v> } <r>from</r> <s>'./user.service'</s>;</li></span>
-						<span class="fragment fade-in" data-fragment-index="3" id="frs-6">
-							<li>r>export</r> <k>class</k> <t>AppComponent</t> {
-								<v>user</v>: <t>User</t>;
-								<k>constructor</k>(<k>private</k> <v>userService</v></li></span>
-					</ul>
-					<pre>
-<r>import</r> { <v>User</v> } <r>from</r> <s>'./model'</s>;
-<r>import</r> { <v>UserService</v> } <r>from</r> <s>'./user.service'</s>;
+					<section>
+						<h3>TypeScript Types</h3>
+						<table class="types-table">
+							<thead>
+								<tr>
+									<th colspan="2">Simple types</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><td>any</td><td>object</td></tr>
+								<tr><td>number</td><td>undefined</td></tr>
+								<tr><td>string</td><td>null</td></tr>
+								<tr><td>boolean</td><td>void</td></tr>
+								<tr><td>never</td><td></td></tr>
+								</tr>
+							</tbody>
+							</table>
+						<a href="https://stackblitz.com/edit/typescript-types" target="_blank">Type examples</a>
+					</section>
+					<section>
+						<h3>Complex Types</h3>
+						<ul>
+							<li><span class="type">interface</span></li>
+							<li><span class="type">type</span></li>
+							<li><span class="keyword">const</span> <span class="type">enum</span></li>
+						</ul>
+						<br></br>
+						<div><a href="https://stackblitz.com/edit/typescript-types" target="_blank">Type examples</a></div>
+					</section>
+				</section>
+				<section>
+					<h3>Generics</h3>
+<!-- <pre><span class="fragment fade-in" data-fragment-index="1"><t>Array</t><<t>variableForType</t>></span> -->
+<pre>
+<k>const</k> <v>names</v><span id="fro-3" data-output-id="3"></span> = [<s>'one'</s>, <s>'two'</s>, <s>'three'</s>];</span>
 
-<r>export</r> <k>class</k> <t>AppComponent</t> {
-	<v>user</v>: <t>User</t>;
-	<k>constructor</k>(<k>private</k> <v>userService</v><span class="fragment fi">: <t>UserService</t></span>) { }
-	<k>async</k> <fN>onInit</fN>(): <t>Promise</t>&lt;<t>void</t>&gt; {
-	<k>this</k>.<v>user</v> = <r>await</r> <k>this</k>.<v>userService</v>.<fN>getUser</fN>(<n>1</n>);
-	}
+<span class="fragment fade-in" data-fragment-index="2">
+<k>interface</k> <t>Array</t>&lt;<span class="multiple fro-4 fro-4-1" id="fro-4"  data-output-id="4"><t>T</t></span>&gt; {
+    <c>/* some properties and methods */</c>
+    <fN>push</fN>(...<v>items</v>: <span class="multiple fro-4 fro-4-2" id="fro-5" data-output-id="5"><t>T</t></span>[]): <t>number</t> {
+        <c>// implimentation</c>
+    };
 }
-					</pre>
-				</section>
 
-				<!-- Example of nested vertical slides -->
+<!-- <k>function</k> <fN>GenericName</fN>(<v>variableForType</v>) {<span id="ttt"></span>} -->
+
+</span></pre>
+					<span class="fragment fade-in" data-fragment-index="1" id="frs-3">
+						<span>: <t>Array</t><<t>string</t>></span>
+					</span>
+					<!-- <span class="fragment fade-in" data-fragment-index="3" id="frs-4" data-output-id="4">
+						<span>: <t>Array</t>&lt;<t>string</t>&gt;</span>
+					</span>
+					<span class="fragment fade-in" data-fragment-index="5" id="frs-5" data-output-id="4">
+						<span>: <t>aaaa</t><<t>dddd</t>></span>
+					</span>
+					<span class="fragment fade-in" data-fragment-index="7" id="frs-6" data-output-id="4">
+						<span>: <t>ffffff</t><<t>stdddddddring</t>></span>
+					</span>
+					<span class="fragment fade-in" data-fragment-index="4" id="frs-7" data-output-id="5">
+						<span>: <t>Array</t><<t>string</t>></span>
+					</span>
+					<span class="fragment fade-in" data-fragment-index="6" id="frs-8" data-output-id="5">
+						<span>: <t>aaaa</t><<t>dddd</t>></span>
+					</span>
+					<span class="fragment fade-in" data-fragment-index="8" id="frs-9" data-output-id="5">
+							<span>: <t>ffffff</t><<t>stdddddddring</t>></span>
+					</span> -->
+					<div><a href="https://stackblitz.com/edit/generics-ts" target="_blank">Generics demo</a></div>
+				</section>
 				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="https://slides.com" target="_blank">https://slides.com</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment fade-up">fade-up (also down, left and right!)</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p>Highlight <span class="fragment highlight-red">red</span> <span class="fragment highlight-blue">blue</span> <span class="fragment highlight-green">green</span></p>
-					</section>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
+					<h3>Mapped Types</h3>
 					<pre>
-function linkify( selector<span class="fragment fade-out" data-fragment-index="1"> ) {</span><span class="fragment fade-in" data-fragment-index="1">: string): string {</span>
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
+<k>type</k> <t>PartialUser</t> = <t>Partial</t><<t>User</t>>;
 					</pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+					<div><a href="https://stackblitz.com/edit/mapped-types-demo" target="_blank">Mapped types demo</a></div>
 				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">The nice thing about standards is that there are so many to choose from</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe data-src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
-
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="https://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
-
 			</div>
 
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-
-		<script>
-
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					// { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/search/search.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/sumpler/sumpler.js', async: true },
-					{ src: 'plugin/typed/typed.js', async: false , callback: function() { }}
-				]
-			});
-
-			Reveal.addEventListener( 'slidechanged', function( event ) {
-				console.log(event);
-
-				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
-			});
-
-			const typeds = {};
-
-			Reveal.addEventListener( 'fragmentshown', function( event ) {
-				// event.fragment = the fragment DOM element
-				console.log('fragment', event);
-				let fr = event.fragments[0];
-				let id = fr.id;
-				if (!id){
-					fr = event.fragments[1] || {};
-					id = fr.id;
-				}
-				if (!id){ return false;}
-				// debugger;
-				const outputId = id.replace('s', 'o');
-				const outputEl = document.querySelector(`#${outputId}`);
-				
-				if (outputEl.classList.contains('to-be-clear')) {
-					outputEl.innerHTML = '';
-					outputEl.classList.remove('to-be-clear');
-				}
-
-				//debugger;
-				if (fr.classList.contains('fade-in')) {
-					var typed = new Typed(`#${outputId}`, {
-						stringsElement: `#${id}`,
-						loop: false,
-						startDelay: 0,
-						typeSpeed: 25,
-						showCursor: false,
-						contentType: 'html',
-						onComplete: function(self) { console.log('onCmplete ', self) },
-						preStringTyped: function(pos, self) { console.log('preStringTyped ',pos, self); },
-						onStringTyped: function(pos, self) { 
-							console.log('onStringTyped ', pos, self)
-						},
-						onLastStringBackspaced: function(self) { console.log('onLastStringBackspaced ', self) },
-						onTypingPaused: function(pos, self) { console.log('onTypingPaused ', pos, self) },
-						onTypingResumed: function(pos, self) { console.log('onTypingResumed ', pos, self) },
-						onReset: function(self) { console.log('onReset ', self) },
-						onStop: function(pos, self) { console.log('onStop ', pos, self) },
-						onStart: function(pos, self) { console.log('onStart ', pos, self) },
-						onDestroy: function(self) { console.log('onDestroy ', self) }
-					});
-
-					typeds[id] = typed;
-				}
-				
-			});
-
-			window.listeners = () => {
-			
-			___t && ___t.destroy();
-			___b && ___b.destroy();
-
-			window.___t = new Typed('#ttt',{
-				strings: ['Type', 'Person'],
-				typeSpeed: 80,
-				showCursor: false,
-				onComplete: function(self) {
-					console.log('onCmplete ', self)
-				},
-				preStringTyped: function(pos, self) {
-					console.log('preStringTyped ', pos, self);
-				},
-				onStringTyped: function(pos, self) {
-					console.log('onStringTyped ', pos, self)
-					self.stop();
-				},
-				onLastStringBackspaced: function(self) {
-					console.log('onLastStringBackspaced ', self)
-				},
-				onTypingPaused: function(pos, self) {
-					console.log('onTypingPaused ', pos, self)
-				},
-				onTypingResumed: function(pos, self) {
-					console.log('onTypingResumed ', pos, self)
-				},
-				onReset: function(self) {
-					console.log('onReset ', self)
-				},
-				onStop: function(pos, self) {
-					console.log('onStop ', pos, self)
-				},
-				onStart: function(pos, self) {
-					console.log('onStart ', pos, self)
-				},
-				onDestroy: function(self) {
-					console.log('onDestroy ', self)
-				}
-			});
-
-			window.___b = new Typed('#bbb',{
-				strings: [
-				'[Property in keyof T]: T[P]',
-				'[Property in "name" | "age"]: T[P]',
-				'["name"]: T["name"]<br> ["age"]: T["age"]'
-				],
-				typeSpeed: 80,
-				showCursor: false,
-				onComplete: function(self) {
-					console.log('onCmplete ', self)
-				},
-				preStringTyped: function(pos, self) {
-					console.log('preStringTyped ', pos, self);
-				},
-				onStringTyped: function(pos, self) {
-					console.log('onStringTyped ', pos, self);
-					self.stop();
-				},
-				onLastStringBackspaced: function(self) {
-					console.log('onLastStringBackspaced ', self)
-				},
-				onTypingPaused: function(pos, self) {
-					console.log('onTypingPaused ', pos, self)
-				},
-				onTypingResumed: function(pos, self) {
-					console.log('onTypingResumed ', pos, self)
-				},
-				onReset: function(self) {
-					console.log('onReset ', self)
-				},
-				onStop: function(pos, self) {
-					console.log('onStop ', pos, self)
-				},
-				onStart: function(pos, self) {
-					console.log('onStart ', pos, self)
-				},
-				onDestroy: function(self) {
-					console.log('onDestroy ', self)
-				}
-			})
-
-
-			}
-
-			Reveal.addEventListener( 'fragmenthidden', function( event ) {
-				// event.fragment = the fragment DOM element
-				console.log('fragment', event);
-				let fr = event.fragments[0];
-				let id = fr.id;
-				if (!id){
-					fr = event.fragments[1] || {};
-					id = fr.id;
-				}
-				if (!id) {return };
-
-				// const toRemove = typeds.findEl(t => t.id === id);
-				typeds[id] && typeds[id].destroy();
-				// debugger;
-				// typeds = [...typeds.slice(0, toRemove), ...typeds(toRmove, typeds.length)];
-
-				// const outputId = id.replace('s', 'o');
-				// //debugger;
-				// if (fr.classList.contains('fade-in')) {
-				// 	var typed = new Typed(`#${outputId}`, {
-				// 		stringsElement: `#${id}`,
-				// 		loop: false,
-				// 		startDelay: 0,
-				// 		typeSpeed: 70,
-				// 		showCursor: false
-				// 	});
-				// }
-			});
-
-			// function callTypedJs() {
-			// 	var typed = new Typed('#typed', {
-			// 		stringsElement: '#typed-strings',
-			// 		loop: true,
-			// 		startDelay: 500,
-			// 		typeSpeed: 50,
-			// 		backSpeed: 35
-			// 	});
-			// }
-
-		</script>
-
+		<script src="js/initPlugins.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/typeit@5.10.1/dist/typeit.min.js"></script>
+		<script src="js/listeners.js"></script>
 	</body>
 </html>
