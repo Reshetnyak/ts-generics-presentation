@@ -66,20 +66,27 @@
 					<section>
 						<h3><span class="blue">Typed</span> superset that compiles</h3>
 						<pre>
-<k>function</k> <fN>isEven</fN>(<v>num</v><span id="fro-1" data-output-id="1"></span>)<span id="fro-2"  data-output-id="2"></span> {
+<k>function</k> <fN>isEven</fN>(<v>num</v><span class="fragment fade-in fi" data-fragment-index="1">: <t>number</t></span>)<span class="fragment fade-in fi" data-fragment-index="2">: <t>boolean</t></span> {
     <r>return</r> <v>num</v> % <n>2</n> === <n>0</n>;
 }
 
 <span class="fragment fade-in" data-fragment-index="3"><fN>isEven</fN>(<s>'20'</s>); <c>// TypeScript error</c></span>
-<span class="fragment fade-in" data-fragment-index="4"><k>const</k> <v>columnWidth</v> = <s>'100px'</s>; <c>// type string</c></span>
+<span class="fragment fade-in" data-fragment-index="4"><k>let</k> <v>columnWidth</v> = <s>'100px'</s>; <c>// type string</c></span>
+<span class="fragment fade-in" data-fragment-index="5"><k>const</k> <v>columnHeight</v> = <s>'200px'</s>;</span><span class="fragment fade-in i" data-fragment-index="6"> <c>// type '200px'</c></span>
 						</pre>
 						<span class="fragment fade-in"><a href="https://stackblitz.com/edit/typescript-nmdtjz?file=index.ts" target="_blank">See it in action</a></span>
-						<span class="fragment fade-in" data-fragment-index="1" id="frs-1">
+						<!-- <span class="fragment fade-in fi" data-fragment-index="1">
+							<span>: <t>number</t></span>
+						</span>
+						<span class="fragment fade-in fi" data-fragment-index="2">
+							<span>: <t>boolean</t></span>
+						</span> -->
+						<!-- <span class="fragment fade-in" data-fragment-index="1" id="frs-1">
 							<span>: <t>number</t></span>
 						</span>
 						<span class="fragment fade-in" data-fragment-index="2" id="frs-2">
 							<span>: <t>boolean</t></span>
-						</span>
+						</span> -->
 						<aside class="notes">
 							<p>Thanks to static analysis system TS helps us to understand how to use parts of our programs.
 								TypeScript offers static analysis based on both the structure of your code,
@@ -232,6 +239,8 @@
 		<script src="js/reveal.js"></script>
 		<script src="js/initPlugins.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/typeit@5.10.1/dist/typeit.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/typeit@5.10.1/dist/typeit.min.js"></script> -->
+		<script src="js/typewriter.js"></script>
 		<script src="js/listeners.js"></script>
 	</body>
 </html>

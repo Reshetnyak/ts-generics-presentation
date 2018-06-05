@@ -73,6 +73,10 @@ n::selection,
   display: inline-block;
 }
 
+.i {
+  display: inline;
+}
+
 .i-b.visible {
   padding: 10px 0;
 }
