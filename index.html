@@ -42,14 +42,24 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h2>Generics and Mapped types in TypeScript</h1>
-					<p>
-						<small>Created by Reshetniak Denis</a></small>
-					</p>
-					<p><a href="http://bit.do/ts-generics" target="_blank">http://bit.do/ts-generics</a></p>
-					<p><a href="http://bit.do/ts-generics-repo" target="_blank">http://bit.do/ts-generics-repo</a></p>
-					<aside class="notes">
-					</aside>
+					<section>
+						<h2>Generics and Mapped types in TypeScript</h1>
+						<p>
+							<small>Created by Reshetniak Denis</a></small>
+						</p>
+						<p><a href="http://bit.do/ts-generics" target="_blank">http://bit.do/ts-generics</a></p>
+						<p><a href="http://bit.do/ts-generics-repo" target="_blank">http://bit.do/ts-generics-repo</a></p>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+<pre><fN>filter</fN>&lt;<t>T</t> <k>extends</k> <k>object</k>, <t>S</t> <k>extends</k> <t>T</t>[<k>keyof</k> <t>T</t>]>(
+    <v>collection</v>: <t>T</t> | <t>null</t> | <t>undefined</t>,
+    <v>predicate</v>: <t>ObjectIteratorTypeGuard</t>&lt;<t>T</t>, <t>S</t>>
+): <t>S</t>[];
+</pre>
+					<span class="fragment fade-in"><a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/lodash/common/collection.d.ts#L283" target="_blank">Lodash common.d.ts</a></span>
+					</section>
 				</section>
 
 				<section>
