@@ -61,12 +61,13 @@ n::selection,
   opacity: 0;
   max-width: 0;
   display: inline-block;
-  transition: opacity 0.75s linear, max-width 0.75s linear;
+  transition: max-width 0.15s linear, opacity 0.55s linear !important;
 }
 
 .fi.visible {
   opacity: 1;
-  max-width: 999px;
+  max-width: 250px;
+  transition: max-width 0.15s linear, opacity 0.55s linear !important;
 }
 
 .i-b {

@@ -75,18 +75,6 @@
 <span class="fragment fade-in" data-fragment-index="5"><k>const</k> <v>columnHeight</v> = <s>'200px'</s>;</span><span class="fragment fade-in i" data-fragment-index="6"> <c>// type '200px'</c></span>
 						</pre>
 						<span class="fragment fade-in"><a href="https://stackblitz.com/edit/typescript-nmdtjz?file=index.ts" target="_blank">See it in action</a></span>
-						<!-- <span class="fragment fade-in fi" data-fragment-index="1">
-							<span>: <t>number</t></span>
-						</span>
-						<span class="fragment fade-in fi" data-fragment-index="2">
-							<span>: <t>boolean</t></span>
-						</span> -->
-						<!-- <span class="fragment fade-in" data-fragment-index="1" id="frs-1">
-							<span>: <t>number</t></span>
-						</span>
-						<span class="fragment fade-in" data-fragment-index="2" id="frs-2">
-							<span>: <t>boolean</t></span>
-						</span> -->
 						<aside class="notes">
 							<p>Thanks to static analysis system TS helps us to understand how to use parts of our programs.
 								TypeScript offers static analysis based on both the structure of your code,
@@ -161,42 +149,16 @@
 				</section>
 				<section>
 					<h3>Generics</h3>
-<!-- <pre><span class="fragment fade-in" data-fragment-index="1"><t>Array</t><<t>variableForType</t>></span> -->
 <pre>
-<k>const</k> <v>names</v><span id="fro-3" data-output-id="3"></span> = [<s>'one'</s>, <s>'two'</s>, <s>'three'</s>];</span>
+<k>const</k> <v>names</v><span class="fragment fade-in fi" data-fragment-index="1">: <t>Array</t><<t>string</t>></span> = [<s>'one'</s>, <s>'two'</s>, <s>'three'</s>];</span>
 
-<span class="fragment fade-in" data-fragment-index="2">
-<k>interface</k> <t>Array</t>&lt;<span class="multiple fro-4 fro-4-1" id="fro-4"  data-output-id="4"><t>T</t></span>&gt; {
+<span class="fragment fade-in" data-fragment-index="2"><k>interface</k> <t>Array</t>&lt;<t>T<span class="fragment fade-in fi" data-fragment-index="3">ype</span></t>&gt; {
     <c>/* some properties and methods */</c>
-    <fN>push</fN>(...<v>items</v>: <span class="multiple fro-4 fro-4-2" id="fro-5" data-output-id="5"><t>T</t></span>[]): <t>number</t> {
+    <fN>push</fN>(...<v>items</v>: <t>T<span class="fragment fade-in fi" data-fragment-index="4">ype</span></t>[]): <t>number</t> {
         <c>// implimentation</c>
     };
 }
-
-<!-- <k>function</k> <fN>GenericName</fN>(<v>variableForType</v>) {<span id="ttt"></span>} -->
-
 </span></pre>
-					<span class="fragment fade-in" data-fragment-index="1" id="frs-3">
-						<span>: <t>Array</t><<t>string</t>></span>
-					</span>
-					<!-- <span class="fragment fade-in" data-fragment-index="3" id="frs-4" data-output-id="4">
-						<span>: <t>Array</t>&lt;<t>string</t>&gt;</span>
-					</span>
-					<span class="fragment fade-in" data-fragment-index="5" id="frs-5" data-output-id="4">
-						<span>: <t>aaaa</t><<t>dddd</t>></span>
-					</span>
-					<span class="fragment fade-in" data-fragment-index="7" id="frs-6" data-output-id="4">
-						<span>: <t>ffffff</t><<t>stdddddddring</t>></span>
-					</span>
-					<span class="fragment fade-in" data-fragment-index="4" id="frs-7" data-output-id="5">
-						<span>: <t>Array</t><<t>string</t>></span>
-					</span>
-					<span class="fragment fade-in" data-fragment-index="6" id="frs-8" data-output-id="5">
-						<span>: <t>aaaa</t><<t>dddd</t>></span>
-					</span>
-					<span class="fragment fade-in" data-fragment-index="8" id="frs-9" data-output-id="5">
-							<span>: <t>ffffff</t><<t>stdddddddring</t>></span>
-					</span> -->
 					<div><a href="https://stackblitz.com/edit/generics-ts" target="_blank">Generics demo</a></div>
 				</section>
 				<section>
@@ -224,12 +186,6 @@
 							<t>Array</t>&lt;<t>string</t>&gt; <v>questions</v>?
 						</p>
 					</div>
-					<!-- <pre>
-<span id="fro-6"><t>Array</t>&lt;<t>string</t>&gt;</span> <v>questions</v>?
-					</pre> -->
-					<!-- <span class="fragment fade-in" id="frs-6">
-						<span><span class="type">Array</span>&lt;<t>string</t>&gt;</span>
-					</span> -->
 				</section>
 			</div>
 
